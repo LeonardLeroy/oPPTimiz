@@ -408,7 +408,7 @@ try
         }
 		$presentation = $application.Presentations.open($pptFile)
 		
-		$process = Get-Process | Where-Object { $_.Name -eq $processName }
+		$process = Get-Process | Where-Object { $_.Name -eq $pptProcessName }
         
         #Check if presentation is set to final and temporary disable it if needed
         $Isfinale = $false
