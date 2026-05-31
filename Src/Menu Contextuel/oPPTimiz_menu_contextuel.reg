@@ -1,0 +1,36 @@
+Windows Registry Editor Version 5.00
+
+; oPPTimiz - menu contextuel (clic droit > "Afficher d'autres options") "Optimiser"
+; pour PowerPoint (.pptx), Word (.docx) et Excel (.xlsx), via le CLI oPPTimiz.exe.
+;
+; Remplacer [INSTALLDIR] par le repertoire d'installation (le MSI le fait automatiquement).
+; Y deployer oPPTimiz.exe ET oPPTimiz.Core.dll.
+; Le moteur traite les formats XML modernes (.pptx / .docx / .xlsx), pas les anciens
+; binaires (.ppt / .doc / .xls).
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.pptx\shell\oPPTimiz]
+"MUIVerb"="oPPTimiz"
+"Icon"="[INSTALLDIR]Resources\\oPPTimiz.ico"
+"subcommands"="oPPtimiz.overrideFile;oPPTimiz.keepFile"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.docx\shell\oPPTimiz]
+"MUIVerb"="oPPTimiz"
+"Icon"="[INSTALLDIR]Resources\\oPPTimiz.ico"
+"subcommands"="oPPtimiz.overrideFile;oPPTimiz.keepFile"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.xlsx\shell\oPPTimiz]
+"MUIVerb"="oPPTimiz"
+"Icon"="[INSTALLDIR]Resources\\oPPTimiz.ico"
+"subcommands"="oPPtimiz.overrideFile;oPPTimiz.keepFile"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\oPPTimiz.overrideFile]
+@="Ecraser le fichier d'origine"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\oPPTimiz.overrideFile\Command]
+@="[INSTALLDIR]oPPTimiz.exe -pptFile \"%1\" -keepFile 0"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\oPPTimiz.keepFile]
+@="Conserver le fichier d'origine"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\oPPTimiz.keepFile\Command]
+@="[INSTALLDIR]oPPTimiz.exe -pptFile \"%1\" -keepFile 1"

@@ -50,6 +50,13 @@ oPPTimiz.exe -pptFile source -compressionLevel Maximal
 oPPTimiz.exe -pptFile source -compressionLevel Intermediate -keepFile 1
 ```
 
+> **Formats pris en charge** : `source` peut être un fichier `.pptx`, `.docx` ou `.xlsx`.
+> Le CLI `oPPTimiz.exe` est fourni par le projet `engine-dotnet/oPPTimiz.Cli` (.NET Framework 4.8, sans dépendance externe). Construction :
+> ```
+> dotnet build engine-dotnet\oPPTimiz.Cli\oPPTimiz.Cli.csproj -c Release
+> ```
+> Déployer `oPPTimiz.exe` **et** `oPPTimiz.Core.dll` dans `[INSTALLDIR]`.
+
 #### Utilisation via le menu contextuel (clic droit) de l'explorateur Windows
 
 Il est possible de lancer l'optimisation d'un ou plusieurs fichiers en les sélectionnant dans l'explorateur Windows via le menu contextuel (clic droit). Les deux modes de fonctionnement, décrits dans la section **Utilisation depuis PowerPoint**, sont disponibles via les options :
@@ -57,6 +64,9 @@ Il est possible de lancer l'optimisation d'un ou plusieurs fichiers en les séle
 - Conserver le fichier d'origine
 
 Dans ces deux modes le niveau de compression est configuré à *Maximal*.
+
+Le menu contextuel est disponible pour les fichiers **PowerPoint (`.pptx`), Word (`.docx`) et Excel (`.xlsx`)**. Sous Windows 11, il apparaît dans le menu classique, accessible via **« Afficher d'autres options »** (ou Maj+F10). Les entrées de registre correspondantes sont fournies dans `Src/Menu Contextuel/oPPTimiz_menu_contextuel.reg`.
+
 ## Comment l'installer ?
 
 ### Installation rapide
@@ -91,6 +101,16 @@ Pour enregistrer le mode de lancement depuis le menu contextuel (clic droit), il
 "subcommands"="oPPtimiz.overrideFile;oPPTimiz.keepFile"
 
 [HKEY_CLASSES_ROOT\SystemFileAssociations\.pptx\shell\oPPTimiz]
+"MUIVerb"="oPPTimiz"
+"Icon"="[INSTALLDIR]Resources\\oPPTimiz.ico"
+"subcommands"="oPPtimiz.overrideFile;oPPTimiz.keepFile"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.docx\shell\oPPTimiz]
+"MUIVerb"="oPPTimiz"
+"Icon"="[INSTALLDIR]Resources\\oPPTimiz.ico"
+"subcommands"="oPPtimiz.overrideFile;oPPTimiz.keepFile"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.xlsx\shell\oPPTimiz]
 "MUIVerb"="oPPTimiz"
 "Icon"="[INSTALLDIR]Resources\\oPPTimiz.ico"
 "subcommands"="oPPtimiz.overrideFile;oPPTimiz.keepFile"
